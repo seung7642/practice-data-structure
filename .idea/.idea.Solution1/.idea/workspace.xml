@@ -8,7 +8,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1cc6ff9-cdf1-4ede-9da9-71b366a04216" name="Default Changelist" comment="업데이트 --" />
+    <list default="true" id="f1cc6ff9-cdf1-4ede-9da9-71b366a04216" name="Default Changelist" comment="aa" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +34,7 @@
         <option value="$PROJECT_DIR$/ConsoleApp1/Test/MyArrayListTest.cs" />
         <option value="$PROJECT_DIR$/MyDataStructureLibrary/MyList.cs" />
         <option value="$PROJECT_DIR$/MyDataStructureLibrary/MyHashSet.cs" />
+        <option value="$PROJECT_DIR$/MyDataStructureLibrary/MyDictionary.cs" />
       </list>
     </option>
   </component>
@@ -89,6 +90,7 @@
       <updated>1606582909036</updated>
       <workItem from="1606582911856" duration="292000" />
       <workItem from="1606583296482" duration="4000000" />
+      <workItem from="1606747672805" duration="538000" />
     </task>
     <task id="LOCAL-00001" summary="업데이트 --">
       <created>1606745921094</created>
@@ -104,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606747077190</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="aa">
+      <created>1606747798585</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606747798586</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,7 +136,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="업데이트 --" />
-    <option name="LAST_COMMIT_MESSAGE" value="업데이트 --" />
+    <MESSAGE value="aa" />
+    <option name="LAST_COMMIT_MESSAGE" value="aa" />
   </component>
   <component name="WindowStateProjectService">
     <state x="767" y="479" width="472" height="184" key="Github.ShareDialog" timestamp="1606746429573">
@@ -202,18 +212,18 @@
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="496" y="310" key="Rider.ProjectTemplateDialog.Size/0.23.1792.1097@0.23.1792.1097" timestamp="1606583071564" />
-    <state x="557" y="167" key="RiderGenerateDialog" timestamp="1606745530733">
+    <state x="557" y="167" key="RiderGenerateDialog" timestamp="1606748170070">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state x="557" y="167" key="RiderGenerateDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1606745530733" />
+    <state x="557" y="167" key="RiderGenerateDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1606748170070" />
     <state x="397" y="210" key="SettingsEditor" timestamp="1606747641686">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="397" y="210" key="SettingsEditor/0.23.1792.1097@0.23.1792.1097" timestamp="1606747641686" />
-    <state x="496" y="307" key="Vcs.Push.Dialog.v2" timestamp="1606747081445">
+    <state x="496" y="307" key="Vcs.Push.Dialog.v2" timestamp="1606747806682">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state x="496" y="307" key="Vcs.Push.Dialog.v2/0.23.1792.1097@0.23.1792.1097" timestamp="1606747081445" />
+    <state x="496" y="307" key="Vcs.Push.Dialog.v2/0.23.1792.1097@0.23.1792.1097" timestamp="1606747806682" />
     <state x="639" y="462" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606746296059">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
