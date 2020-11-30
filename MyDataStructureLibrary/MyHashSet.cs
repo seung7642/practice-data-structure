@@ -38,16 +38,22 @@ namespace MyDataStructure
         private IEnumerator<T> _iterator;
         private int _index;
 
-        public MyHashSetEnumerator(MyList<T>[] bucket, int index)
+        public MyHashSetEnumerator(MyList<T>[] bucket)
         {
             _bucket = bucket;
-            _index = index;
+            _index = 0;
             _iterator = FindNextIterator();
         }
 
         public IEnumerator<T> FindNextIterator()
         {
-            
+            var list = _bucket[_index++];
+            if (list != null)
+            {
+                return list.GetEnumerator();
+            }
+
+            return null;
         }
 
         public T Current { get; }

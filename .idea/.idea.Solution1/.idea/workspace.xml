@@ -8,10 +8,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1cc6ff9-cdf1-4ede-9da9-71b366a04216" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyDataStructureLibrary/MyDataStructureLibrary.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Solution1.sln" afterDir="false" />
+    <list default="true" id="f1cc6ff9-cdf1-4ede-9da9-71b366a04216" name="Default Changelist" comment="업데이트 --">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Solution1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Solution1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyDataStructureLibrary/MyHashSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyDataStructureLibrary/MyHashSet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,8 +88,16 @@
       <option name="presentableId" value="Default" />
       <updated>1606582909036</updated>
       <workItem from="1606582911856" duration="292000" />
-      <workItem from="1606583296482" duration="1949000" />
+      <workItem from="1606583296482" duration="3432000" />
     </task>
+    <task id="LOCAL-00001" summary="업데이트 --">
+      <created>1606745921094</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606745921094</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,8 +119,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="업데이트 --" />
+    <option name="LAST_COMMIT_MESSAGE" value="업데이트 --" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="767" y="479" width="472" height="184" key="Github.ShareDialog" timestamp="1606746429573">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="767" y="479" width="472" height="184" key="Github.ShareDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1606746429573" />
     <state width="1750" height="395" key="GridCell.Tab.0.bottom" timestamp="1606584148561">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
@@ -190,5 +203,13 @@
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="397" y="210" key="SettingsEditor/0.23.1792.1097@0.23.1792.1097" timestamp="1606583770205" />
+    <state x="496" y="307" key="Vcs.Push.Dialog.v2" timestamp="1606746569101">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="496" y="307" key="Vcs.Push.Dialog.v2/0.23.1792.1097@0.23.1792.1097" timestamp="1606746569101" />
+    <state x="639" y="462" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606746296059">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="639" y="462" key="git4idea.remote.GitConfigureRemotesDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1606746296059" />
   </component>
 </project>
