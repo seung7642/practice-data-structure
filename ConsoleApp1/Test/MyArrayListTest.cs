@@ -1,7 +1,7 @@
 using System;
 using MyDataStructure;
 
-namespace ConsoleApp1.Test
+namespace Test
 {
     public class MyArrayListTest
     {
