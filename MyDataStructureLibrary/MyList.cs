@@ -172,6 +172,9 @@ namespace MyDataStructure
 
         public int IndexOf(T item, int index, int count)
         {
+            if (index + count >= _size)
+                throw new ArgumentOutOfRangeException();
+
             for (int i = index; i < (index + count); i++)
             {
                 if (_equalityComparer.Equals(_array[i], item))

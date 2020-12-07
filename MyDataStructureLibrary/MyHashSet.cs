@@ -7,7 +7,7 @@ namespace MyDataStructure
     {
         private MyList<T>[] _bucket;
         private IEqualityComparer _equalityComparer;
-        private int _index;
+        private int _count;
 
         public MyHashSet(IEqualityComparer<T> equalityComparer = null)
             : this(3, equalityComparer)
@@ -23,8 +23,9 @@ namespace MyDataStructure
 
         private MyList<T> FindBucketList(T item)
         {
-            int index = (_equalityComparer.GetHashCode(item) & 0x7fffffff) % _bucket.Length;
-            return this._bucket[index];
+            int hashCode = (_equalityComparer.GetHashCode(item) & 0x7fffffff);
+            int index = hashCode % _bucket.Length;
+            return _bucket[index];
         }
 
         private void Resize(int capacity)
@@ -56,17 +57,64 @@ namespace MyDataStructure
 
         public bool Contains(T item)
         {
-
+            var list = FindBucketList(item);
+            if (list == null)
+            {
+                return null;
+            }
+            return list.Contains(e => _equalityComparer.Equals(e, item));
         }
 
-        private MyList<T> FindBucketList(T item)
+        public bool Add(T item)
         {
+            if (_count >= _bucket.Length * HashHelpers.RESIZE_FACTOR)
+            {
+                Resize(_bucket.Length * HashHelpers.PRIME_FACTOR);
+            }
 
+            int hashCode = (_equalityComparer.GetHashCode(item) & 0x7fffffff);
+            int index = hashCode % _bucket.Length;
+            var list = _bucket[index];
+            if (list == null)
+            {
+                list = new MyList<T>();
+                _bucket[index] = list;
+            }
+
+            if (!_bucket[index].Contains(item))
+            {
+                _bucket[index].Add(item);
+                _count++;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool Remove(T item)
+        {
+            var list = FindBucketList(item);
+            if (list != null)
+            {
+                if (list.Remove(item))
+                {
+                    _count--;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public T FindEntry(T key)
         {
-            
+            // TODO
+            var list = FindBucketList(key);
+            if (list != null)
+            {
+
+            }
+
         }
 
         public IEnumerator<T> GetEnumerator()
