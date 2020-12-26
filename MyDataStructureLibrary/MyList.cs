@@ -49,10 +49,8 @@ namespace MyDataStructure
                 if (value < _size) // capacity는 size보다만 크다면 줄일 수도 있어야 한다.
                     throw new ArgumentOutOfRangeException();
 
-                if (value != _array.Length) // 변경하려는 capacity값이 기존과 다를 때만 실행.
-                {
-                    if (value > 0) // 음수 capacity는 있을 수 없다.
-                    {
+                if (value != _array.Length) { // 변경하려는 capacity값이 기존과 다를 때만 실행.
+                    if (value > 0) { // 음수 capacity는 있을 수 없다.
                         var newItems = new T[Capacity * 2];
                         if (_size > 0)
                             Array.Copy(_array, newItems, _size);
@@ -117,8 +115,7 @@ namespace MyDataStructure
 
         public void RemoveRange(int index, int count)
         {
-            if (count > 0) // 지정한 인덱스의 앞으로는 삭제 불가능.
-            {
+            if (count > 0) { // 지정한 인덱스의 앞으로는 삭제 불가능.
                 int i = _size;
                 _size -= count;
                 if (index < _size) {
