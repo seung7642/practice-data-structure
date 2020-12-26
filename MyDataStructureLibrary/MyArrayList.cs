@@ -5,8 +5,8 @@ namespace MyDataStructure
 {
     public class MyArrayList : IEnumerable
     {
-        private object[] _array;   // 할당된 배열을 가리키는 참조변수
-        private int _size;         // 현재 저장된 원소 개수
+        private object[] _array; // 할당된 배열을 가리키는 참조변수
+        private int _size; // 현재 저장된 원소 개수
         private int position = -1;
 
         public MyArrayList()

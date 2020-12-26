@@ -6,8 +6,8 @@ namespace MyDataStructure
 {
     public class MyList<T> : IEnumerable<T>
     {
-        private T[] _array;        // 할당된 배열을 가리키는 참조변수
-        private int _size;         // 현재 저장된 원소 개수
+        private T[] _array; // 할당된 배열을 가리키는 참조변수
+        private int _size; // 현재 저장된 원소 개수
         private int position = -1;
         private IEqualityComparer<T> _equalityComparer;
 
@@ -45,8 +45,7 @@ namespace MyDataStructure
         public int Capacity
         {
             get { return _array.Length; }
-            set
-            {
+            set {
                 if (value < _size) // capacity는 size보다만 크다면 줄일 수도 있어야 한다.
                     throw new ArgumentOutOfRangeException();
 
@@ -66,14 +65,12 @@ namespace MyDataStructure
         // 외부에서 배열 요소에 접근을 위한 인덱서 프로퍼티
         public T this[int index]
         {
-            get
-            {
+            get {
                 if (index >= _size)
                     throw new IndexOutOfRangeException();
                 return _array[index];
             }
-            set
-            {
+            set {
                 if (index >= _size)
                     throw new IndexOutOfRangeException();
                 _array[index] = value;
@@ -83,8 +80,7 @@ namespace MyDataStructure
         private void EnsureCapacity()
         {
             int capacity = _array.Length;
-            if (_size >= capacity)
-            {
+            if (_size >= capacity) {
                 this.Capacity = capacity == 0 ? 4 : capacity * 2;
             }
         }
@@ -104,8 +100,7 @@ namespace MyDataStructure
             // 배열 공간 체크, 부족할 시 resize
             EnsureCapacity();
 
-            if (index <= _size)
-            {
+            if (index <= _size) {
                 Array.Copy(_array, index, _array, index + 1, _size - index);
 
                 // 원소 추가
@@ -126,8 +121,7 @@ namespace MyDataStructure
             {
                 int i = _size;
                 _size -= count;
-                if (index < _size)
-                {
+                if (index < _size) {
                     Array.Copy(_array, index + count, _array, index, _size - index);
                 }
 
@@ -175,10 +169,8 @@ namespace MyDataStructure
             if (index + count >= _size)
                 throw new ArgumentOutOfRangeException();
 
-            for (int i = index; i < (index + count); i++)
-            {
-                if (_equalityComparer.Equals(_array[i], item))
-                {
+            for (int i = index; i < (index + count); i++) {
+                if (_equalityComparer.Equals(_array[i], item)) {
                     return i;
                 }
             }
@@ -202,10 +194,8 @@ namespace MyDataStructure
             if (index >= _size) throw new ArgumentOutOfRangeException();
             if (count < 0 || index - count + 1 < 0) throw new ArgumentOutOfRangeException();
 
-            for (int i = index; i > index - count; i--)
-            {
-                if (_equalityComparer.Equals(_array[i], item))
-                {
+            for (int i = index; i > index - count; i--) {
+                if (_equalityComparer.Equals(_array[i], item)) {
                     return i;
                 }
             }
@@ -216,21 +206,21 @@ namespace MyDataStructure
         public bool Remove(T item)
         {
             int idx = IndexOf(item);
-            if (idx != -1)
-            {
+            if (idx != -1) {
                 RemoveAt(idx);
                 return true;
             }
+
             return false;
         }
 
         public bool Contains(T item)
         {
-            for (int index = 0; index < _size; index++)
-            {
+            for (int index = 0; index < _size; index++) {
                 if (_equalityComparer.Equals(_array[index], item))
                     return true;
             }
+
             return false;
         }
 
@@ -264,8 +254,7 @@ namespace MyDataStructure
 
             public T Current
             {
-                get
-                {
+                get {
                     if (_index < 0 || _index >= _list.Count)
                         throw new ArgumentOutOfRangeException("Current의 인덱스 범위 에러.");
 
@@ -275,8 +264,7 @@ namespace MyDataStructure
 
             public bool MoveNext()
             {
-                if (++_index >= _list.Count)
-                {
+                if (++_index >= _list.Count) {
                     return false;
                 }
 
