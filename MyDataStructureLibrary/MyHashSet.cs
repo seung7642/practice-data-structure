@@ -6,7 +6,7 @@ namespace MyDataStructure
     public class MyHashSet<T> : IEnumerable<T>
     {
         private MyList<T>[] _bucket;
-        private IEqualityComparer _equalityComparer;
+        private IEqualityComparer<T> _equalityComparer;
         private int _count;
 
         public MyHashSet(IEqualityComparer<T> equalityComparer = null)
@@ -33,20 +33,16 @@ namespace MyDataStructure
             var newSize = HashHelpers.GetPrime(capacity);
             var newBucket = new MyList<T>[newSize];
 
-            // 새 capacity에 대한 해싱 작업. (기존 버킷에 들어있던 모든 데이터에 대해)
-            for (int i = 0; i < _bucket.Length; i++)
-            {
+            for (int i = 0; i < _bucket.Length; i++) {
                 var list = _bucket[i];
-                if (list != null)
-                {
-                    foreach (var item in list)
-                    {
+                if (list != null) {
+                    foreach (var item in list) {
                         int hashCode = (_equalityComparer.GetHashCode(item) & 0x7fffffff);
                         int index = hashCode % newSize;
-                        if (newBucket[index] == null)
-                        {
+                        if (newBucket[index] == null) {
                             newBucket[index] = new MyList<T>();
                         }
+
                         newBucket[index].Add(item);
                     }
                 }
@@ -58,31 +54,28 @@ namespace MyDataStructure
         public bool Contains(T item)
         {
             var list = FindBucketList(item);
-            if (list == null)
-            {
-                return null;
+            if (list == null) {
+                return false;
             }
+
             return list.Contains(e => _equalityComparer.Equals(e, item));
         }
 
         public bool Add(T item)
         {
-            if (_count >= _bucket.Length * HashHelpers.RESIZE_FACTOR)
-            {
+            if (_count >= _bucket.Length * HashHelpers.RESIZE_FACTOR) {
                 Resize(_bucket.Length * HashHelpers.PRIME_FACTOR);
             }
 
             int hashCode = (_equalityComparer.GetHashCode(item) & 0x7fffffff);
             int index = hashCode % _bucket.Length;
             var list = _bucket[index];
-            if (list == null)
-            {
+            if (list == null) {
                 list = new MyList<T>();
                 _bucket[index] = list;
             }
 
-            if (!_bucket[index].Contains(item))
-            {
+            if (!_bucket[index].Contains(item)) {
                 _bucket[index].Add(item);
                 _count++;
                 return true;
@@ -94,10 +87,8 @@ namespace MyDataStructure
         public bool Remove(T item)
         {
             var list = FindBucketList(item);
-            if (list != null)
-            {
-                if (list.Remove(item))
-                {
+            if (list != null) {
+                if (list.Remove(item)) {
                     _count--;
                     return true;
                 }
@@ -110,16 +101,16 @@ namespace MyDataStructure
         {
             // TODO
             var list = FindBucketList(key);
-            if (list != null)
-            {
+            if (list != null) {
 
             }
 
+            return null;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new MyHashSetEnumerator(this);
+            return new MyHashSetEnumerator(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -134,9 +125,9 @@ namespace MyDataStructure
         private IEnumerator<T> _iterator;
         private int _index;
 
-        public MyHashSetEnumerator(MyList<T>[] bucket)
+        public MyHashSetEnumerator(MyHashSet<T> hashSet)
         {
-            _bucket = bucket;
+            //_bucket = hashSet._bucket;
             _index = 0;
             _iterator = FindNextIterator();
         }
@@ -144,8 +135,7 @@ namespace MyDataStructure
         public IEnumerator<T> FindNextIterator()
         {
             var list = _bucket[_index++];
-            if (list != null)
-            {
+            if (list != null) {
                 return list.GetEnumerator();
             }
 
@@ -155,8 +145,7 @@ namespace MyDataStructure
         public T Current { get; }
         public bool MoveNext()
         {
-            while (_iterator != null && !_iterator.MoveNext())
-            {
+            while (_iterator != null && !_iterator.MoveNext()) {
                 _iterator = FindNextIterator();
             }
 

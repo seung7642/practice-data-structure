@@ -1,5 +1,5 @@
 ﻿using System;
-using ConsoleApp1.Test;
+using Test;
 
 namespace ConsoleApp1
 {
