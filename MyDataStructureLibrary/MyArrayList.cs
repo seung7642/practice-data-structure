@@ -100,17 +100,8 @@ namespace MyDataStructure
 
         public void RemoveRange(int index, int count)
         {
-            // 1. 반복문을 이용한 코드.
-            //_size -= count;
-            //for (int i = index; i < _size; i++)
-            //{
-            //    _array[i] = _array[i + count];
-            //    _array[i + count] = 0; // 값을 앞으로 당겼다면 초기화.
-            //}
-
-            // 2. Array.Copy() 메서드를 이용한 코드. 
-            if (count > 0) // 지정한 인덱스의 앞으로는 삭제 불가능.
-            {
+            // 지정한 인덱스의 앞으로는 삭제 불가능.
+            if (count > 0) { 
                 int i = _size;
                 _size -= count;
                 if (index < _size) {
@@ -218,7 +209,8 @@ namespace MyDataStructure
             return new MyEnumerator(this);
         }
 
-        public class MyEnumerator : IEnumerator // 내부 클래스라 public이든 private이든 상관없다.
+        // 내부 클래스라 public이든 private이든 상관없다.
+        public class MyEnumerator : IEnumerator 
         {
             private MyArrayList _list;
             private int _index;

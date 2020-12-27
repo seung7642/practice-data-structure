@@ -8,7 +8,7 @@ namespace MyDataStructure
     {
         private T[] _array; // 할당된 배열을 가리키는 참조변수
         private int _size; // 현재 저장된 원소 개수
-        private int position = -1;
+        private int _position = -1;
         private IEqualityComparer<T> _equalityComparer;
 
         public MyList()
@@ -77,9 +77,9 @@ namespace MyDataStructure
 
         private void EnsureCapacity()
         {
-            int capacity = _array.Length;
+            var capacity = _array.Length;
             if (_size >= capacity) {
-                this.Capacity = capacity == 0 ? 4 : capacity * 2;
+                this.Capacity = (capacity == 0 ? 4 : capacity * 2);
             }
         }
 
@@ -115,8 +115,8 @@ namespace MyDataStructure
 
         public void RemoveRange(int index, int count)
         {
-            if (count > 0) { // 지정한 인덱스의 앞으로는 삭제 불가능.
-                int i = _size;
+            if (count > 0) { 
+                var i = _size;
                 _size -= count;
                 if (index < _size) {
                     Array.Copy(_array, index + count, _array, index, _size - index);

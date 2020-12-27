@@ -16,15 +16,15 @@ namespace MyDataStructure
 
         public MyHashSet(int capacity, IEqualityComparer<T> equalityComparer = null)
         {
-            int size = HashHelpers.GetPrime(capacity);
+            var size = HashHelpers.GetPrime(capacity);
             _bucket = new MyList<T>[size];
             _equalityComparer = equalityComparer ?? EqualityComparer<T>.Default;
         }
 
         private MyList<T> FindBucketList(T item)
         {
-            int hashCode = (_equalityComparer.GetHashCode(item) & 0x7fffffff);
-            int index = hashCode % _bucket.Length;
+            var hashCode = (_equalityComparer.GetHashCode(item) & 0x7fffffff);
+            var index = hashCode % _bucket.Length;
             return _bucket[index];
         }
 
@@ -33,12 +33,12 @@ namespace MyDataStructure
             var newSize = HashHelpers.GetPrime(capacity);
             var newBucket = new MyList<T>[newSize];
 
-            for (int i = 0; i < _bucket.Length; i++) {
+            for (var i = 0; i < _bucket.Length; i++) {
                 var list = _bucket[i];
                 if (list != null) {
                     foreach (var item in list) {
-                        int hashCode = (_equalityComparer.GetHashCode(item) & 0x7fffffff);
-                        int index = hashCode % newSize;
+                        var hashCode = (_equalityComparer.GetHashCode(item) & 0x7fffffff);
+                        var index = hashCode % newSize;
                         if (newBucket[index] == null) {
                             newBucket[index] = new MyList<T>();
                         }
@@ -58,7 +58,12 @@ namespace MyDataStructure
                 return false;
             }
 
-            return list.Contains(e => _equalityComparer.Equals(e, item));
+            foreach (var element in list) {
+                
+            }
+
+            //return list.Contains(e => _equalityComparer.Equals(e, item));
+            return false;
         }
 
         public bool Add(T item)
@@ -105,12 +110,13 @@ namespace MyDataStructure
 
             }
 
-            return null;
+            // return null;
+            return key;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new MyHashSetEnumerator(this);
+            return new MyHashSetEnumerator<T>(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -121,23 +127,23 @@ namespace MyDataStructure
 
     public class MyHashSetEnumerator<T> : IEnumerator<T>
     {
-        private MyList<T>[] _bucket;
+        private MyHashSet<T> _hashSet;
         private IEnumerator<T> _iterator;
         private int _index;
 
         public MyHashSetEnumerator(MyHashSet<T> hashSet)
         {
-            //_bucket = hashSet._bucket;
+            _hashSet = hashSet;
             _index = 0;
             _iterator = FindNextIterator();
         }
 
         public IEnumerator<T> FindNextIterator()
         {
-            var list = _bucket[_index++];
-            if (list != null) {
-                return list.GetEnumerator();
-            }
+            // var list = _hashSet[_index++];
+            // if (list != null) {
+            //     return list.GetEnumerator();
+            // }
 
             return null;
         }
@@ -161,7 +167,6 @@ namespace MyDataStructure
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
         }
     }
 }
