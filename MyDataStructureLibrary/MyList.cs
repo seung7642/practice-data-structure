@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 namespace MyDataStructure
 {
-    public class MyList<T> : IEnumerable<T>
+    public class MyList<T> : IList<T>
     {
+        private static readonly T[] _emptyArray = new T[0];
+
         private T[] _array; // 할당된 배열을 가리키는 참조변수
-        private int _size; // 현재 저장된 원소 개수
+        private int _size;  // 현재 저장된 원소 개수
         private int _position = -1;
         private IEqualityComparer<T> _equalityComparer;
 
@@ -36,6 +38,31 @@ namespace MyDataStructure
             this._equalityComparer = equalityComparer ?? EqualityComparer<T>.Default;
         }
 
+        public MyList(IEnumerable<T> collection)
+        {
+            if (collection == null)
+                throw new ArgumentNullException();
+
+            var c = collection as ICollection<T>;
+            if (c != null) {
+                var count = c.Count;
+                if (count == 0) {
+                    _array = _emptyArray;
+                } else {
+                    _array = new T[count];
+                    c.CopyTo(_array, 0);
+                    _size = count;
+                }
+            } else {
+                _size = 0;
+                _array = _emptyArray;
+
+                foreach (var item in collection) {
+                    Add(item);
+                }
+            }
+        }
+
 
         public int Count
         {
@@ -50,17 +77,20 @@ namespace MyDataStructure
                     throw new ArgumentOutOfRangeException();
 
                 if (value != _array.Length) { // 변경하려는 capacity값이 기존과 다를 때만 실행.
-                    if (value > 0) { // 음수 capacity는 있을 수 없다.
-                        var newItems = new T[Capacity * 2];
+                    if (value > 0) { 
+                        var newItems = new T[value];
                         if (_size > 0)
                             Array.Copy(_array, newItems, _size);
+
                         _array = newItems;
+                    } else {
+                        _array = _emptyArray;
                     }
                 }
             }
         }
 
-        // 외부에서 배열 요소에 접근을 위한 인덱서 프로퍼티
+        // 인덱서 프로퍼티
         public T this[int index]
         {
             get {
@@ -105,6 +135,18 @@ namespace MyDataStructure
                 _array[index] = element;
                 _size++;
             }
+        }
+
+        public int BinarySearch(int index, int count, T item, IComparer<T> comparer)
+        {
+            if (index < 0)
+                throw new ArgumentOutOfRangeException();
+            if (count < 0)
+                throw new ArgumentOutOfRangeException();
+            if (_size - index < count)
+                throw new ArgumentException();
+
+            return Array.BinarySearch<T>(_array, index, count, item, comparer);
         }
 
         // 해당 위치의 원소 삭제
